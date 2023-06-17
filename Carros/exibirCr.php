@@ -18,6 +18,11 @@
             background-color: white;
         }
 
+        a{
+            text-decoration: none;
+            color: #fff;
+        }
+
     </style>
 
     <div class="menu2 px-4 py-5 my-5 text-center">
@@ -25,6 +30,31 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <fieldset>
+
+        <?php 
+            include "../database.php";
+
+            $sql = "SELECT ID, modelo, ano FROM carro";
+            $result = $conn->query($sql);
+
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    echo "ID: " . $row["ID"]. " Modelo: " . $row["modelo"]. " Ano: " . $row["ano"] . "<br>";
+                }
+            }
+
+            else{
+                echo "Nenhum resultado encontrado!";
+            }
+
+            $conn->close();
+        ?>
+    
+    </fieldset>
+
+    
 
 </body>
 </html>

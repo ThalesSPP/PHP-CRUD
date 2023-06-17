@@ -252,6 +252,11 @@
             transform: scale(1.1);
         }
 
+        a{
+            text-decoration: none;
+            color: #fff;
+        }
+
     </style>
 
     <div class="menu2 px-4 py-5 my-5 text-center">
@@ -272,8 +277,15 @@
                     <button type="submit" class="btn-envia zoom-shadow">
                         <i class="icon icon-forward-1"> Deletar Cliente</i>
                     </button>
+                    <br>
+                    <br>
                 </div>
             </form>
+
+            <button type="submit" class="btn-envia zoom-shadow">
+                <a class="icon icon-forward-1" href="../index.php"> <i>Voltar para a Home Page</i></a>
+            </button>
+
         </div>
     </div>
 
