@@ -276,8 +276,8 @@
                     <label for="Nome"> <i class="icon icon-info"></i> </label>
                 </span>
                 <span>
-                    <textarea type="text" class="textarea-balao-up" id="CPF" name="CPF" rows="3" placeholder="CPF" autocomplete="off" required=""></textarea>
-                    <label for="CPF"> <i class="icon icon-bubble-4"></i> </label>
+                    <input type="text" class="input-balao-up" id="CPF" name="CPF" placeholder="CPF" autocomplete="off" required="" />
+                    <label for="CPF"> <i class="icon icon-info"></i> </label>
                 </span>
                 <div class="box-btn">
 

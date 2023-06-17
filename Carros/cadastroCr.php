@@ -271,8 +271,8 @@
                     <label for="Modelo"> <i class="icon icon-info"></i> </label>
                 </span>
                 <span>
-                    <textarea type="text" class="textarea-balao-up" id="Ano" name="Ano" rows="3" placeholder="Ano" autocomplete="off" required=""></textarea>
-                    <label for="Ano"> <i class="icon icon-bubble-4"></i> </label>
+                    <input type="text" class="input-balao-up" id="Ano" name="Ano" placeholder="Ano" autocomplete="off" required="" />
+                    <label for="Ano"> <i class="icon icon-info"></i> </label>
                 </span>
                 <div class="box-btn">
 
