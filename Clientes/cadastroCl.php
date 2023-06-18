@@ -26,7 +26,7 @@
             flex-wrap: wrap;
             justify-content: center;
             background-color: #545d67;
-            padding: 60px 0;
+            padding: 0 0;
 
         }
 
@@ -276,7 +276,7 @@
                 </span>
                 <div class="box-btn">
 
-                    <button type="submit" class="btn-envia zoom-shadow">
+                    <button type="submit" class="btn-envia zoom-shadow" name="Cadastro">
                         <i class="icon icon-forward-1"> Cadastrar Cliente</i>
                     </button>
                     <br>
@@ -293,3 +293,32 @@
 
 </body>
 </html>
+
+<?php
+    if(isset($_POST['Cadastro'])){
+        include "../database.php";
+    
+        //Verifica se a conexão foi bem sucedida:
+        if(mysqli_connect_errno()){
+            echo "Erro de conexão com o Banco de Dados";
+            exit();
+        }
+    
+        //Pegar o valor dos campos e adicionar em uma variável:
+        $nome = $_POST['Nome'];
+        $cpf = $_POST['CPF'];
+    
+        //Realiza a consulta SQL para inserir os dados:
+        $sql = "INSERT INTO cliente(nome, cpf) VALUES('$nome', '$cpf')";
+        
+        if(mysqli_query($conn, $sql)){
+            echo "Dados cadastrados!";
+        }
+        
+        else{
+            echo "Erro ao inserir dados: " . mysqli_error($conn);
+        }
+    
+        mysqli_close($conn);
+    }
+?>

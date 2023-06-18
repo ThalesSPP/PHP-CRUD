@@ -18,7 +18,7 @@
         }
 
         .box-formulario{
-
+            
             width: 100%;
             align-items: center;
             display: flex;
@@ -26,7 +26,7 @@
             flex-wrap: wrap;
             justify-content: center;
             background-color: #545d67;
-            padding: 60px 0;
+            padding: 0 0;
 
         }
 
@@ -276,7 +276,7 @@
                 </span>
                 <div class="box-btn">
 
-                    <button type="submit" class="btn-envia zoom-shadow">
+                    <button type="submit" class="btn-envia zoom-shadow" name="Cadastro">
                         <i class="icon icon-forward-1"> Cadastrar Carro</i>
                     </button>
                     <br>
@@ -293,3 +293,32 @@
 
 </body>
 </html>
+
+<?php
+    if(isset($_POST['Cadastro'])){
+        include "../database.php";
+    
+        //Verifica se a conexão foi bem sucedida:
+        if(mysqli_connect_errno()){
+            echo "Erro de conexão com o Banco de Dados";
+            exit();
+        }
+    
+        //Pegar o valor dos campos e adicionar em uma variável:
+        $modelo = $_POST['Modelo'];
+        $ano = $_POST['Ano'];
+    
+        //Realiza a consulta SQL para inserir os dados:
+        $sql = "INSERT INTO carro(modelo, ano) VALUES('$modelo', '$ano')";
+        
+        if(mysqli_query($conn, $sql)){
+            echo "Dados cadastrados!";
+        }
+        
+        else{
+            echo "Erro ao inserir dados: " . mysqli_error($conn);
+        }
+    
+        mysqli_close($conn);
+    }
+?>

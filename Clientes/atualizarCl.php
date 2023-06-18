@@ -19,7 +19,7 @@
         }
 
         .box-formulario{
-
+            
             width: 100%;
             align-items: center;
             display: flex;
@@ -27,17 +27,15 @@
             flex-wrap: wrap;
             justify-content: center;
             background-color: #545d67;
-            padding: 60px 0;
+            padding: 0 0;
 
         }
 
         .formulario{
-
             width: 700px;
             background: #545d67;
             padding: 60px 5%;
             text-align: center;
-
         }
 
         .formulario span{
