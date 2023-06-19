@@ -34,7 +34,7 @@
     </div>
 
     <div class="menu d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
-        <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px" data-bs-theme="light">
+        <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px" data-bs-theme="dark">
             <li class="dropdown-item rounded-2">Carros:</li>
             <li>
                 <hr class="dropdown-divider">
@@ -43,6 +43,15 @@
             <li><a class="dropdown-item rounded-2" href="Carros/atualizarCr.php">Atualizar Carro</a></li>
             <li><a class="dropdown-item rounded-2" href="Carros/deletarCr.php">Deletar Carro</a></li>
             <li><a class="dropdown-item rounded-2" href="Carros/exibirCr.php">Exibir Carros</a></li>
+        </ul>
+
+        <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px" data-bs-theme="light">
+            <li class="dropdown-item rounded-2">Aluguel:</li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item rounded-2" href="Aluguel/cadastroAl.php">Realizar aluguel</a></li>
+            <li><a class="dropdown-item rounded-2" href="Aluguel/exibirAl.php">Exibir alugueis</a></li>
         </ul>
 
         <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
