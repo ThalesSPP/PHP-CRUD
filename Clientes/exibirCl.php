@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -265,35 +264,55 @@
             color: #fff;
         }
 
+        .table{
+            width: auto;
+            table-layout: fixed;
+            margin: 0 auto;
+        }
+
+        .table .tabela{
+            background-color: #7eba00;
+            color: #FFF;
+            text-align: center;
+        }
+
     </style>
 
     <div class="menu2 px-4 py-5 my-5 text-center">
         <h1 class="display-5 fw-bold text-body-emphasis">Lista para Exibição de Clientes</h1>
     </div>
 
-    <div class="exibir">
-        <?php 
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="tabela" scope="col"><i>ID</i></th>
+                <th class="tabela" scope="col"><i>Nome</i></th>
+                <th class="tabela" scope="col"><i>CPF</i></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
             include "../database.php";
 
-            $sql = "SELECT ID, nome, cpf FROM cliente";
+            $sql = "SELECT * FROM cliente";
             $result = $conn->query($sql);
 
             if($result->num_rows > 0){
                 while($row = $result->fetch_assoc()){
-                    echo "ID: " . $row["ID"]. " nome: " . $row["nome"]. " CPF: " . $row["cpf"] . "<br>";
+
+                    echo "<tr>";
+                    echo '<td class="td">' . $row['ID'] . '</td>';
+                    echo '<td class="td">' . $row['nome'] . '</td>';
+                    echo '<td class="td">' . $row['cpf'] . '</td>';
+                    echo '</tr>';
                 }
             }
-
-            else{
-                echo "Nenhum resultado encontrado!";
-            }
-        ?>
-
-    </div>
+            ?>
+        </tbody>
+    </table>
 
     <div class="box-formulario">
         <div class="formulario">
-
             <button type="submit" class="btn-envia zoom-shadow">
                 <a class="icon icon-forward-1" href="../index.php"> <i>Voltar para a Home Page</i></a>
             </button>

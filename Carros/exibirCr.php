@@ -257,19 +257,16 @@
             color: #fff;
         }
 
-        table{
-            border-collapse: collapse;
-            width: 100%;
+        .table{
+            width: auto;
+            table-layout: fixed;
+            margin: 0 auto;
         }
 
-        th, td{
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th{
-            background-color: #f2f2f2;
+        .table .tabela{
+            background-color: #7eba00;
+            color: #FFF;
+            text-align: center;
         }
 
     </style>
@@ -278,27 +275,34 @@
         <h1 class="display-5 fw-bold text-body-emphasis">Lista para Exibição de Carros</h1>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-
-    <div class="exibir">
-        <?php 
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="tabela" scope="col"><i>ID</i></th>
+                <th class="tabela" scope="col"><i>Modelo</i></th>
+                <th class="tabela" scope="col"><i>Ano</i></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
             include "../database.php";
 
-            $sql = "SELECT ID, modelo, ano FROM carro";
+            $sql = "SELECT * FROM carro";
             $result = $conn->query($sql);
 
             if($result->num_rows > 0){
                 while($row = $result->fetch_assoc()){
-                    echo "ID: " . $row["ID"]. " Modelo: " . $row["modelo"]. " Ano: " . $row["ano"] . "<br>";
+
+                    echo "<tr>";
+                    echo '<td class="td">' . $row['ID'] . '</td>';
+                    echo '<td class="td">' . $row['modelo'] . '</td>';
+                    echo '<td class="td">' . $row['ano'] . '</td>';
+                    echo '</tr>';
                 }
             }
-
-            else{
-                echo "Nenhum resultado encontrado!";
-            }
-        ?>
-
-    </div>
+            ?>
+        </tbody>
+    </table>
 
     <div class="box-formulario">
         <div class="formulario">
@@ -309,6 +313,8 @@
 
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 </body>
 </html>
