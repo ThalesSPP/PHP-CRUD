@@ -266,8 +266,8 @@
 
             <form action="#" method="post">
                 <span>
-                    <input type="text" class="input-balao-up" id="ID do Cliente" name="ID do Cliente" placeholder="ID do Cliente" autocomplete="off" required="" />
-                    <label for="ID do Cliente"> <i class="icon icon-info"></i> </label>
+                    <input type="text" class="input-balao-up" id="ID" name="ID" placeholder="ID" autocomplete="off" required="" />
+                    <label for="ID"> <i class="icon icon-info"></i> </label>
                 </span>
                 <span>
                     <input type="text" class="input-balao-up" id="Nome" name="Nome" placeholder="Nome" autocomplete="off" required="" />
@@ -279,7 +279,7 @@
                 </span>
                 <div class="box-btn">
 
-                    <button type="submit" class="btn-envia zoom-shadow">
+                    <button type="submit" class="btn-envia zoom-shadow" name="Atualizar">
                         <i class="icon icon-forward-1"> Atualizar Cliente</i>
                     </button>
                     <br>
@@ -298,3 +298,35 @@
 
 </body>
 </html>
+
+<?php 
+    if(isset($_POST['Atualizar'])){
+        include "../database.php";
+
+        //Verifica se a conexão foi bem sucedida:
+        if(mysqli_connect_error()){
+            echo "Erro de conexão com o Banco de Dados!";
+            exit();
+        }
+
+        //Recebendo o ID da linha a ser atualizada:
+        $id = $_POST['ID'];
+
+        //Pegar o valor dos campos e adicionar em uma variável:
+        $upd_nome = $_POST['Nome'];
+        $upd_cpf = $_POST['CPF'];
+
+        //Realiza a consulta SQL para atualizar os dados:
+        $sql = "UPDATE cliente SET nome = '$upd_nome', cpf = $upd_cpf WHERE ID = $id";
+        
+        if(mysqli_query($conn, $sql)){
+            echo "Dados atualizados!";
+        }
+
+        else{
+            echo "Erro ao atualizar dados: " . mysqli_error($conn);
+        }
+
+        mysqli_close($conn);
+    }
+?>
