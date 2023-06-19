@@ -269,12 +269,12 @@
             <form action="#" method="post">
 
                 <span>
-                    <input type="text" class="input-balao-up" id="ID do Veiculo" name="ID do Veiculo" placeholder="ID do Veiculo" autocomplete="off" required="" />
-                    <label for="ID do Veiculo"> <i class="icon icon-info"></i> </label>
+                    <input type="text" class="input-balao-up" id="ID" name="ID" placeholder="ID" autocomplete="off" required="" />
+                    <label for="ID"> <i class="icon icon-info"></i> </label>
                 </span>
                 <div class="box-btn">
 
-                    <button type="submit" class="btn-envia zoom-shadow">
+                    <button type="submit" class="btn-envia zoom-shadow" name="Deletar">
                         <i class="icon icon-forward-1"> Deletar Veiculo</i>
                     </button>
                     <br>
@@ -294,3 +294,31 @@
 
 </body>
 </html>
+
+<?php
+    if(isset($_POST['Deletar'])){
+        include "../database.php";
+
+        // Verifica se a conexão foi bem sucedida:
+        if(mysqli_connect_error()){
+            echo "Erro de conexão com o Banco de Dados!";
+            exit();
+        }
+
+        // Obtém o ID do cliente a ser excluído
+        $id = $_POST['ID'];
+
+        // Realiza a consulta SQL para excluir o cliente
+        $sql = "DELETE FROM carro WHERE ID = $id";
+
+        if(mysqli_query($conn, $sql)){
+            echo "Carro excluído com sucesso!";
+        } 
+        
+        else {
+            echo "Erro ao excluir cliente: " . mysqli_error($conn);
+        }
+
+        mysqli_close($conn);
+    }
+?>
